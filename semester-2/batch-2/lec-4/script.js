@@ -1,99 +1,91 @@
-console.log("Asynchronous Programming");
+console.log("Asynchronous Programming")
 
-// --------------------synchronous code---------------
+console.log("Before")
 
-// console.log("Before");
+function fun() {
+  console.log("I am Fun")
+}
 
-// function fun(){
-//     console.log("I am Fun");
-// }
-// fun();
+setTimeout(fun, 0)
 
-// console.log("After");
+console.log("After")
 
-// --------------------Asynchronous code---------------
 
-// console.log("Before");
+console.log("Before")
 
-// function fun(){
-//     console.log("I am Fun");
-// }
+let flag = true
 
-// setTimeout(fun,0);
+function funLoop() {
+  console.log("loop break")
+  flag = false
+}
 
-// console.log("After");
+setTimeout(funLoop, 2000)
 
-//-------------------aynchronous code--------
+console.log("After")
+console.log("next")
 
-// console.log("Before");//1
+while (flag) {}
 
-// let flag = true;
 
-// function fun() {
-//   //2sec
-//   console.log("loop break");
-//   flag = false;
-// }
+console.log("Before")
 
-// setTimeout(fun, 2000); // runs  somewhere ( browser) web API, after 2s added fun() to Callback queue
+const fun2 = () => {
+  console.log("Set timeout 1")
 
-// console.log("After");//2
-// console.log("next");//3
+  let timeInFuture = Date.now() + 7000
 
-// while (flag) {} //Infinite loop
+  while (Date.now() < timeInFuture) {}
 
-//----------------------quiz1----------------------
-// console.log("Before");
-// const fun2 = () => {
-//   console.log("Set timeout 1");
-//   let timeInFuture = Date.now() + 7000;
+  console.log("after while")
+}
 
-//   while (Date.now() < timeInFuture) {} // 7s loop
-//   console.log("after while");
-// };
-// const fun1 = () => console.log("hello"); //
-// setTimeout(fun1, 2000); //
-// setTimeout(fun2, 1000); //
+const fun1 = () => console.log("hello")
 
-// console.log("After");
+setTimeout(fun1, 2000)
+setTimeout(fun2, 1000)
 
-//----------------------quiz2----------------------
-// console.log("Start"); //1, t=0
+console.log("After")
 
-// setTimeout(() => {
-//   console.log("First Timeout (1s)"); // 6, t=1
 
-//   setTimeout(() => {
-//     console.log("Inner Timeout (0.5s)"); // 7 , t=1.5
-//   }, 500);//webApi-4, after t=1.5s added to cb Q
-// }, 1000);//webAPi-1, after t=1 added to cb Q.
+console.log("Start")
 
-// setTimeout(() => {
-//   console.log("Second Timeout (0s)"); // 4, t=0
-// }, 0);//webAPi-2, after t=0 Added to CB queue
+setTimeout(() => {
+  console.log("First Timeout (1s)")
 
-// function runTask() {
-//   console.log("Inside runTask"); //2, t=0
+  setTimeout(() => {
+    console.log("Inner Timeout (0.5s)")
+  }, 500)
+}, 1000)
 
-//   setTimeout(() => {
-//     console.log("Timeout inside runTask (300ms)"); //5, t=0.3
-//   }, 300);//webAPi-3, added to cb Q after t=0.3,
+setTimeout(() => {
+  console.log("Second Timeout (0s)")
+}, 0)
 
-//   function innerTask() {
-//     console.log("Inside innerTask"); //3, t=0
-//   }
 
-//   innerTask();
-// }
+function runTask() {
+  console.log("Inside runTask")
 
-// runTask();
+  setTimeout(() => {
+    console.log("Timeout inside runTask (300ms)")
+  }, 300)
 
-//SetInterval -----
-// let i = 0;
+  function innerTask() {
+    console.log("Inside innerTask")
+  }
 
-// let id = setInterval(() => {
-//   console.log("I'm inside setInterval", ++i);
-//   if (i === 10) {
-//     clearInterval(id);
-//   }
-// }, 1000);
+  innerTask()
+}
+
+runTask()
+
+
+let i = 0
+
+let id = setInterval(() => {
+  console.log("I'm inside setInterval", ++i)
+
+  if (i === 10) {
+    clearInterval(id)
+  }
+}, 1000)
