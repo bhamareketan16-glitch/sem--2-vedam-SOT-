@@ -1,0 +1,63 @@
+//Function Declaration
+function calculatePrice(quantity) {
+  let pricePerItem = 500;
+  let total = quantity * pricePerItem;
+
+  if (quantity >= 10) {
+    total = total - (total * 0.10);
+  }
+
+  total = total + (total * 0.18);
+
+  return total;
+}
+
+console.log(calculatePrice(12));
+
+
+//Function Expression
+const calculatePriceExp = function (quantity) {
+  let pricePerItem = 500;
+  let total = quantity * pricePerItem;
+
+  if (quantity >= 10) {
+    total = total - (total * 0.10);
+  }
+
+  total = total + (total * 0.18);
+
+  return total;
+};
+
+console.log(calculatePriceExp(12));
+
+//Arrow Function
+const calculatePriceArrow = (quantity) => {
+  let pricePerItem = 500;
+  let total = quantity * pricePerItem;
+
+  if (quantity >= 10) {
+    total = total - (total * 0.10);
+  }
+
+  total = total + (total * 0.18);
+
+  return total;
+};
+
+console.log(calculatePriceArrow(12));
+
+//Immediately Invoked Function Expression (IIFE)
+(function () {
+  let quantity = 12;
+  let pricePerItem = 500;
+  let total = quantity * pricePerItem;
+
+  if (quantity >= 10) {
+    total = total - (total * 0.10);
+  }
+
+  total = total + (total * 0.18);
+
+  console.log(total);
+})();
